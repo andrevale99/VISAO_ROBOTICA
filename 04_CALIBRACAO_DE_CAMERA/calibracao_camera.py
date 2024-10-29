@@ -1,18 +1,10 @@
 import cv2 as cv
-import matplotlib.pyplot as plt
-from matplotlib.pyplot import figure
 import numpy as np
 import os
 import glob
 
 PATH = "/home/andre/Documents/Git/VISAO_ROBOTICA_EGM0008/04_CALIBRACAO_DE_CAMERA/"
 PATH_IMG = "/home/andre/Documents/Git/VISAO_ROBOTICA_EGM0008/IMAGENS/"
-# print(PATH)
-# print(os.listdir(PATH_IMG))
-# print(cv.__version__)
-
-img_original = cv.imread(PATH_IMG+os.listdir(PATH_IMG)[2])
-img_gray = cv.cvtColor(img_original, cv.COLOR_BGR2GRAY)
 
 def cm_to_inch(value):
     return value/2.54
