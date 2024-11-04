@@ -108,6 +108,7 @@ def main():
                                                                      None, None)
     
     print(f'Coefs. Intrisecos:\n{cameraMatrix}\n')
+    print(f'distCoeffs:\n{distCoeffs}\n')
 
     undistorted_img = cv.undistort( img, 
                                    cameraMatrix,
