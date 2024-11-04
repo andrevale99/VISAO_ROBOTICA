@@ -1,10 +1,16 @@
+# André Menezes de Freitas Vale
+# 20231026707 
+# 
+# Codigo de calibracao da camera
+# A parte de captura e de calibração foram retiradas
+# no próprio site de Opencv
+
 import cv2 as cv
 import numpy as np
 import os
 import glob
 
-PATH = "/home/andre/Documents/Git/VISAO_ROBOTICA_EGM0008/04_CALIBRACAO_DE_CAMERA/"
-PATH_IMG = "/home/andre/Documents/Git/VISAO_ROBOTICA_EGM0008/IMAGENS/"
+PATH = os.getcwd() + "/"
 
 def cm_to_inch(value):
     return value/2.54
@@ -50,7 +56,8 @@ def main():
         # Find the chess board corners
         ret_findChess, corners = cv.findChessboardCorners(gray, (7,6), None)
  
-        # if frame is read correctly ret is True
+        # Caso detect algum padrão de xadrez, grava
+        # a imagem
         if ret_findChess:
             print(f'Chess')
 
@@ -73,6 +80,8 @@ def main():
     images = glob.glob(PATH+"*.jpg")
     # print(np.sort(images))
 
+    # Laco para leitura das fotos salvas com os padroes
+    # para guardar os coeficientes
     for fname in images:
         img = cv.imread(fname)
         gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
@@ -100,8 +109,8 @@ def main():
     # So para pegar o tamanho da imagem
     img = cv.imread(PATH+"chessPattern_0.jpg")
     gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-    # So para pegar o tamanho da imagem
 
+    # Parametros intrinsecos e coeficientes de distorcao
     ret, cameraMatrix, distCoeffs, rvecs, tvecs = cv.calibrateCamera( objpoints, 
                                                                      imgpoints, 
                                                                      gray.shape[::-1],
