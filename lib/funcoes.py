@@ -4,12 +4,6 @@ import numpy as np
 def cm_to_inch(value):
     return value/2.54
 #=======================================================================
-def rad_to_angle(value):
-    return value*180/np.pi
-#=======================================================================
-def angle_to_rad(value):
-    return value*np.pi/180
-#=======================================================================
 def filtro_espacial(img, kernel):
     img_temp = np.zeros_like(img, dtype=np.float16)
 
